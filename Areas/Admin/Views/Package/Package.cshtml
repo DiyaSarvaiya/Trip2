@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+<link href="~/admin/css/admin-view.css" rel="stylesheet" />
+<div class="main-content">
+    @await Html.PartialAsync("~/Views/Shared/_Admin_Header.cshtml");
+    <div class="container-fluid mt--7" style="width:92%;margin-left:8%">
+        <!-- Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">Package List</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table justify-content-center table-flush">
+                            <thead class="" id="ad-thead">
+                                <tr>
+                                    <th scope="col" class="text-center" id="ad-th-font">#</th>
+                                    <th scope="col" class="text-center" id="ad-th-font">First</th>
+                                    <th scope="col" class="text-center" id="ad-th-font">Last</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="text-center" id="ad-td-font">1</th>
+                                    <td class="text-center" id="ad-td-font">Mark</td>
+                                    <td class="text-center" id="ad-td-font">Otto</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-center" id="ad-td-font">2</th>
+                                    <td class="text-center" id="ad-td-font">Jacob</td>
+                                    <td class="text-center" id="ad-td-font">Thornton</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-center" id="ad-td-font">3</th>
+                                    <td class="text-center" id="ad-td-font">Larry</td>
+                                    <td class="text-center" id="ad-td-font">the Bird</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

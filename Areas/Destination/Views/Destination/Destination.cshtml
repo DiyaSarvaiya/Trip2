@@ -1,0 +1,454 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var City = ViewBag.CityList;
+    var State = ViewBag.StateList;
+    var Country = ViewBag.CountryList;
+
+}
+@using System.Data;
+@using Trip2.Areas.Admin.Models;
+@using Trip2.Areas.Destination.Controllers;
+@model DataTable;
+<link rel="stylesheet" href="~/destination/css/destination.css">
+
+
+
+<div class="bradcam_area breadcam_bg_1">
+    <h3>Destinations</h3>
+</div>
+
+<div class="" style="height: 800px; padding-left:7%;padding-right:7%">
+    <hr />
+    <div class="mr-3 shadow d-inline-block float-left" style="width:20%;height:97%">
+        <div class="m-4">
+
+            <h4 class="mb-3" style="font-weight:600;font-size:20px">
+                Filter By
+            </h4>
+            @*  <a asp-area="Destination" asp-controller="Destination" asp-action="LoadPlaceFilter" class="btn btn-primary">
+            FILTERS
+            </a> *@
+            <hr />
+            <h5 class="mb-3 mt-3">Ratings</h5>
+            <form method="post" asp-area="Destination" asp-controller="Destination" asp-action="DestinationRatingFilter">
+                <ul class="ml-3">
+                    <li class="m-1 mb-2">
+                        <button type="submit" value="4.0" name="Rating" id="Rating" class="btn btn-outline-light" @* style="background-color:white;outline-color:white" *@>
+
+                            <img src="~/Font/star-solid.svg" style="height:15px" />
+                            <img src="~/Font/star-solid.svg" style="height:15px" />
+                            <img src="~/Font/star-solid.svg" style="height:15px" />
+                            <img src="~/Font/star-solid.svg" style="height:15px" />
+                            <img src="~/Font/star-regular.svg" style="height:15px" />
+                        </button>
+
+                    </li>
+                    <li class="m-1 mb-2">
+                        <button type="submit" value="3.0" name="Rating" id="Rating" class="btn btn-outline-light">
+
+                            <img src="~/Font/star-solid.svg" style="height:15px" />
+                            <img src="~/Font/star-solid.svg" style="height:15px" />
+                            <img src="~/Font/star-solid.svg" style="height:15px" />
+                            <img src="~/Font/star-regular.svg" style="height:15px" />
+                            <img src="~/Font/star-regular.svg" style="height:15px" />
+                        </button>
+                    </li>
+                    <li class="m-1 mb-2">
+                        <button type="submit" value="2.0" name="Rating" id="Rating" class="btn btn-outline-light">
+
+                            <img src="~/Font/star-solid.svg" style="height:15px" />
+                            <img src="~/Font/star-solid.svg" style="height:15px" />
+                            <img src="~/Font/star-regular.svg" style="height:15px" />
+                            <img src="~/Font/star-regular.svg" style="height:15px" />
+                            <img src="~/Font/star-regular.svg" style="height:15px" />
+                        </button>
+                    </li>
+                    <li class="m-1 mb-2">
+                        <button type="submit" value="1.0" name="Rating" id="Rating" class="btn btn-outline-light">
+
+                            <img src="~/Font/star-solid.svg" style="height:15px" />
+                            <img src="~/Font/star-regular.svg" style="height:15px" />
+                            <img src="~/Font/star-regular.svg" style="height:15px" />
+                            <img src="~/Font/star-regular.svg" style="height:15px" />
+                            <img src="~/Font/star-regular.svg" style="height:15px" />
+                        </button>
+                    </li>
+                </ul>
+            </form>
+            <hr />
+            <h5 class="mb-3 mt-3">Climate</h5>
+
+
+            <form method="post" asp-area="Destination" asp-controller="Destination" asp-action="ClimateFilter">
+                <ul>
+                    <div class="btn-group row ml-3" role="group" aria-label="Basic mixed styles example">
+                        <button type="submit" value="cloudy" name="Climate" id="Climate" class="btn btn-light rounded-sm mr-2">
+                            <img src="~/Font/cloud-solid.svg" style="height:15px" class="mr-2" />Cloudy
+                        </button>
+                        <button type="submit" value="sunny" name="Climate" id="Climate" class="btn btn-light rounded-sm mr-2">
+                            <img src="~/Font/sun-solid.svg" style="height:15px" class="mr-2" />Sunny
+                        </button>
+                        <br />
+
+                        <button type="submit" value="cold" name="Climate" id="Climate" class="btn btn-light rounded-sm mr-2 ">
+                            <img src="~/Font/snowflake-regular.svg" style="height:15px" class="mr-2" />Cold
+                        </button>
+                    </div>
+                </ul>
+            </form>
+            <hr />
+            <h5 class="mb-3 mt-3">Place</h5>
+            <form method="post" asp-area="Destination" asp-controller="Destination" asp-action="PlaceFilter">
+
+                <div class="ml-3">
+                    @*  <input list="cityList" name="CityID" placeholder="Select City" class="mb-2"/>
+                    <select id="cityList" class="form-select mb-2" name="CityID">
+                    <option selected value="0">Select City</option>
+                    @foreach (var city in City)
+                    {
+                    <option value="@city.CityID">@city.CityName</option>
+                    }
+
+                    </select>
+
+                    @*  <input list="stateList" name="StateID" placeholder="Select State" class="mb-2" />
+                    <select id="stateList" class="form-select mb-2" name="StateID">
+                    <option selected value="0">Select State</option>
+                    @foreach (var state in State)
+                    {
+                    <option value="@state.StateID" name="StateID">@state.StateName</option>
+                    }
+
+                    </select>
+
+                    @* <input list="countryList" name="CountryID" placeholder="Select Country" class="mb-2" />
+                    <select id="countryList" class="form-select" name="CountryID">
+                    <option selected value="0">Select Country</option>
+                    @foreach (var country in Country)
+                    {
+                    <option value="@country.CountryID" name="CountryID">@country.CountryName</option>
+                    }
+
+                    </select>*@
+                    @*  <input list="cityList" name="CityID" placeholder="Select City" class="mb-2"/>
+                    <datalist id="cityList" class="form-select mb-2">
+                    <option selected>City</option>
+                    @foreach (var city in ViewBag.CityList)
+                    {
+                    <option value="@city.CityID">@city.CityName</option>
+                    }
+
+                    </DataList>
+
+                    <input list="stateList" name="StateID" placeholder="Select State" class="mb-2"/>
+                    <datalist id="stateList" class="form-select mb-2">
+                    <option selected>State</option>
+                    @foreach (var state in ViewBag.StateList)
+                    {
+                    <option value="@state.StateID" name="StateID">@state.StateName</option>
+                    }
+
+                    </datalist>
+
+                    <input list="countryList" name="CountryID" placeholder="Select Country"class="mb-2"/>
+                    <datalist id="countryList" class="form-select">
+                    <option selected>Country</option>
+                    @foreach (var country in ViewBag.CountryList)
+                    {
+                    <option value="@country.CountryID" name="CountryID">@country.CountryName</option>
+                    }
+
+                    </datalist> *@
+
+                </div>
+                <input name="CityID" placeholder="Select City" class="m-2" />
+                <input name="StateID" placeholder="Select State" class="m-2" />
+                <input name="CountryID" placeholder="Select Country" class="m-2" />
+                <br />
+                <button type="submit" class="btn btn-primary mt-3 col-4">Show</button>
+            </form>
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+    <div class="h-100 d-inline-block pl-2 resizable-div" style="width:78%;overflow:scroll;">
+
+
+        @* <div class="row pl-4 ml-5  ">
+        @{
+        @foreach (DataRow dr in Model.Rows)
+        {
+
+
+        <div class=" mr-5 mb-3" style="height:560px;background-color:rgba(26, 55, 77, 0.05);border-radius:10px;width:400px">
+        <div class="destination h-100">
+
+        <img src="@dr["Photo1"]" style="height:53%;width:93%;border-radius:10px; margin:3% 0px 3% 3%;" />
+        <div class="text p-3" style="margin:3%;width:93%">
+
+        <div class="d-flex">
+        <div class="one">
+        <h3><a href="hotel-single.html">@dr["Name"]</a></h3>
+        <p class="rate">
+        <i class="icon-star"></i>
+        <i class="icon-star"></i>
+        <i class="icon-star"></i>
+        <i class="icon-star"></i>
+        <i class="icon-star-o"></i>
+        <span>&nbsp;@dr["Rating"]</span>
+        </p>
+        </div>
+
+        </div>
+        <p>@dr["Detail"]</p>
+        <hr>
+        <p class="bottom-area d-flex">
+        <span><i class="icon-map-o"></i>&nbsp;&nbsp; @dr["CityName"], @dr["CountryName"] </span>
+        <span class="ml-auto"><a asp-area="Destination" asp-controller="Destination" asp-action="DestinationDetail" asp-route-DestinationID="@dr["DestinationID"]">View Detail</a></span>
+        </p>
+
+        </div>
+        </div>
+        </div>
+
+
+        }
+        }
+        </div> *@
+
+
+        @* new Style *@
+
+        <div class="untree_co-section w-100 pt-0 d-flex justify-content-center ">
+            <div class="list-container ">
+                <div class="row ">
+
+                     @{
+                        @foreach (DataRow dr in Model.Rows)
+                        {
+
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 mb-4">
+                                <div class="media-1">
+                                    <a asp-area="Destination" asp-controller="Destination" asp-action="DestinationDetail" asp-route-DestinationID="@dr["DestinationID"]" class="d-block mb-3">
+                                    <img src="@dr["Photo1"]" alt="image" class="" style="height:403px;width:85%;object-fit:cover">
+                                    </a>
+                                    <span class="d-flex align-items-center loc mb-2">
+                                        <span class="icon-room mr-3"></span>
+                                        <span>@dr["CountryName"]</span>
+                                    </span>
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <h3><a href="#">@dr["Name"]</a></h3>
+                                            <div class="price ml-auto">
+
+                                                <i class="icon-star"></i>
+                                                <span>@dr["Rating"]</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        }
+
+                    }
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+@* <div class="card" style="width: 18rem; height:500px;">
+    <img src="@dr["Photo1"]" class="card-img-top" style="height:60%" alt="...">
+    <div class="card-body height:100%">
+        <h5 class="font-weight-700">@dr["Name"]</h5>
+        <p class="card-subtitle">@dr["Detail"]</p>
+
+        <h6 class="card-subtitle text-muted float-left">Rating</h6>
+        <h5 class="float-left">@dr["Rating"]</h5>
+
+    </div>
+    <div class="card-footer">
+        <button class=""> View Detail</button>
+    </div>
+</div>
+
+
+@* <div class="p-3 text-danger w-25">
+            <div style="display: flex; align-items: center;justify-content: center;">
+                <div style="height: 500px; width: 100%;overflow: hidden; background-color: rgba(26, 55, 77, 0.1); border-radius: 20px;">
+                    <img style="height: 74%;width: 100%;padding:10px;border-radius: 20px; object-fit: cover;" src="@dr["Photo1"]">
+                    <h1 style="padding: 0 10px ; margin: 0;">@dr["Name"]</h1>
+                    <div style="float:left;">
+                        <h6 style="padding-left:15px; float:left;color:black">@dr["Detail"]</h6>
+                        <button style="margin:3% 3% 0 55%; background-color: #1A374D; color:white;border-radius: 50px;width: 140px; height: 40px; border: 0;">View Detail</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+@* <img style="height:20px; padding-right:5px; float:left" src="~/Font/star-solid.svg">
+        <h5 style="float:left;">@dr["Rating"]</h5> *@
+@* <div class="card">
+                    <img class="card-img" src="~/tour/images/hero-slider-2.jpg" alt="">
+                    <div class="card-body">
+                        <h1 class="card-title">Paris</h1>
+                        <p class="card-sub-title"> Eiffel tower</p>
+                        <p class="card-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora veritatis illo blanditiis, expedita voluptatibus consequuntur, est deleniti possimus at earum, dolor recusandae! Dolores voluptas, aut iure nihil doloremque modi quis!</p>
+                        <button class="card-btn">view detail</button>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+        <p class="/* card-sub-title */" style="text-transform: capitalize;font-size: 12px;font-weight: 300;">
+        @dr["Detail"]
+        </p>
+        <p class="/* card-info */" style="font-size: 16px;line-height: 15px; margin: 20px 0;font-weight: 400;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora veritatis illo blanditiis, expedita voluptatibus consequuntur, est deleniti possimus at earum, dolor recusandae! Dolores voluptas, aut iure nihil doloremque modi quis!</p>
+        <button class="/* card-btn */" style="color: white;width: 120px; background: rgb(117, 157, 117);padding:5px;border-radius: 5px;text-transform: capitalize;border: none;font-weight: 500;cursor: pointer;">view detail</button>
+
+
+
+
+                <div class="card">
+                    <img class="card-img" src="~/tour/images/hero-slider-2.jpg" alt="">
+                    <div class="card-body">
+                        <h1 class="card-title">Paris</h1>
+                        <p class="card-sub-title"> Eiffel tower</p>
+                        <p class="card-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora veritatis illo blanditiis, expedita voluptatibus consequuntur, est deleniti possimus at earum, dolor recusandae! Dolores voluptas, aut iure nihil doloremque modi quis!</p>
+                        <button class="card-btn">view detail</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img" src="~/tour/images/hero-slider-2.jpg" alt="">
+                    <div class="card-body">
+                        <h1 class="card-title">Paris</h1>
+                        <p class="card-sub-title"> Eiffel tower</p>
+                        <p class="card-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora veritatis illo blanditiis, expedita voluptatibus consequuntur, est deleniti possimus at earum, dolor recusandae! Dolores voluptas, aut iure nihil doloremque modi quis!</p>
+                        <button class="card-btn">view detail</button>
+                    </div>
+                </div> *@
+@*  <div class="row">
+                       @{
+                            @foreach (DataRow dr in Model.Rows)
+                            {
+                                <div class="item col-4" style="height:300px">
+                                    <a class="media-thumb" href="@dr["Photo1"]" style="height:400px;width:350px;border-radius:8px;" data-fancybox="gallery">
+                                        <div class="media-text">
+                                            <h3>@dr["Name"]</h3>
+                                            <p class="location">@dr["Detail"]</p>
+                                        </div>
+                                        <img src="@dr["Photo1"]" alt="Image" class="img-fluid">
+                                    </a>
+                                </div>
+                            }
+                       }
+                    </div> *@
+
+
+
+
+@* <div class="untree_co-section">
+    <div class="container">
+        <div class="row text-center justify-content-center mb-5">
+            <div class="col-lg-7"><h2 class="section-title text-center">Popular Destination</h2></div>
+        </div>
+             class="owl-carousel owl-3-slider"
+        <div>
+        <h1>hello</h1>
+            <div class="item" style="height:300px">
+            <a class="media-thumb" href="~/tour/images/hero-slider-1.jpg" data-fancybox="gallery">
+                    <div class="media-text">
+                        <h3>Pragser Wildsee</h3>
+                        <span class="location">Italy</span>
+                    </div>
+                    <img src="~/tour/images/hero-slider-1.jpg" alt="Image" class="img-fluid">
+                </a>
+            </div>
+
+                <div class="item" style="height:300px">
+            <a class="media-thumb" href="~/tour/images/hero-slider-2.jpg" data-fancybox="gallery">
+                    <div class="media-text">
+                        <h3>Oia</h3>
+                        <span class="location">Greece</span>
+                    </div>
+                <img src="~/tour/images/hero-slider-2.jpg" alt="Image" class="img-fluid">
+                </a>
+            </div>
+
+                <div class="item" style="height:300px">
+            <a class="media-thumb" href="~/tour/images/hero-slider-3.jpg" data-fancybox="gallery">
+                    <div class="media-text">
+                        <h3>Perhentian Islands</h3>
+                        <span class="location">Malaysia</span>
+                    </div>
+                <img src="~/tour/images/hero-slider-3.jpg" alt="Image" class="img-fluid">
+                </a>
+            </div>
+
+
+                <div class="item" style="height:300px">
+            <a class="media-thumb" href="~/tour/images/hero-slider-4.jpg" data-fancybox="gallery">
+                    <div class="media-text">
+                        <h3>Rialto Bridge</h3>
+                        <span class="location">Italy</span>
+                    </div>
+                <img src="~/tour/images/hero-slider-4.jpg" alt="Image" class="img-fluid">
+                </a>
+            </div>
+
+                <div class="item" style="height:300px">
+            <a class="media-thumb" href="~/tour/images/hero-slider-5.jpg" data-fancybox="gallery">
+                    <div class="media-text">
+                        <h3>San Francisco, United States</h3>
+                        <span class="location">United States</span>
+                    </div>
+                <img src="~/tour/images/hero-slider-5.jpg" alt="Image" class="img-fluid">
+                </a>
+            </div>
+
+                <div class="item" style="height:300px">
+            <a class="media-thumb" href="~/tour/images/hero-slider-1.jpg" data-fancybox="gallery">
+                    <div class="media-text">
+                        <h3>Lake Thun</h3>
+                        <span class="location">Switzerland</span>
+                    </div>
+                <img src="~/tour/images/hero-slider-2.jpg" alt="Image" class="img-fluid">
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>*@
+

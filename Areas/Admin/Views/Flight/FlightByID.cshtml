@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+@using System.Data;
+@model DataTable;
+<link href="~/admin/css/admin-view.css" rel="stylesheet" />
+<div class=" mt-5 d-flex justify-content-center" style="margin-left:13%; height:800px;width:85%;">
+    <div class="shadow w-50">
+        <div class="card-header">
+            <h2>Destination Detail</h2>
+        </div>
+        <div class="m-3 row w-75 ">
+            @{
+                @foreach (DataRow dr in Model.Rows)
+                {
+                    <div class="col-12 mb-2">
+                        <img src="@dr["Photo"]" height="170px" width="170px" />
+                    </div>
+                    <div class="col-6"><h3>AirLine Name</h3></div>
+                    <div class="col-6 mb-2"><h3 class=" text-muted">@dr["AirlineName"]</h3></div>
+
+
+                    <div class="col-6"><h3>FlightNo</h3></div>
+                    <div class="col-6 mb-2"><h3 class=" text-muted">@dr["FlightNo"]</h3></div>
+
+
+                    <div class="col-6"><h3>DepartureCity</h3></div>
+                    <div class="col-6 mb-2"><h3 class=" text-muted">@dr["DepartureCity"]</h3></div>
+
+                    <div class="col-6"><h3>Stops</h3></div>
+                    <div class="col-6 mb-2"><h3 class=" text-muted">@dr["Stops"]</h3></div>
+
+                    <div class="col-6"><h3>DepartureTime</h3></div>
+                    <div class="col-6 mb-2"><h3 class=" text-muted">@dr["DepartureTime"]</h3></div>
+
+                    <div class="col-6"><h3>ArrivalTime</h3></div>
+                    <div class="col-6 mb-2"><h3 class=" text-muted">@dr["ArrivalTime"]</h3></div>
+
+                    <div class="col-6"><h3>DestinationCity</h3></div>
+                    <div class="col-6 mb-2"><h3 class=" text-muted">@dr["DestinationCity"]</h3></div>
+
+                    <div class="col-6"><h3>Type</h3></div>
+                    <div class="col-6 mb-2"><h3 class=" text-muted">@dr["Type"]</h3></div>
+
+                    <div class="col-6"><h3>Class</h3></div>
+                    <div class="col-6 mb-2"><h3 class=" text-muted">@dr["Class"]</h3></div>
+
+                    <div class="col-6"><h3>Duration</h3></div>
+                    <div class="col-6 mb-2"><h3 class=" text-muted">@dr["Duration"]</h3></div>
+
+                    <div class="col-6"><h3>Price</h3></div>
+                    <div class="col-6 mb-2"><h3 class=" text-muted">@dr["Price"]</h3></div>
+
+                    <button class="btn btn-primary col-2 ml-3 mt-2" onclick="goBack()">Back</button>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>

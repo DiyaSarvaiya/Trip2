@@ -1,0 +1,68 @@
+﻿@using Trip2.Areas.Admin.Models;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+@model Trip2.Areas.Admin.Models.CityModel;
+<div class=" mt-5 h-100" style="margin-left:18%;width:70%;">
+    <div class="card shadow h-100">
+        <form method="post" asp-area="Admin" asp-controller="City" asp-action="Insert" style="margin:5%;" class="display-4 needs-validation">
+
+            <div class="row">
+                <div class="mb-3 col-12">ADD / EDIT CITY</div>
+                @Html.HiddenFor(x=>x.CityID)
+                @*   <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+
+                <div class="col-12 p-2 form-group m-0 ">
+                    <label class="form-control-label">City Name</label>
+                    <input asp-for="CityName" class="form-control text-black-50 font-weight-bold">
+                    <h3> <span asp-validation-for="CityName" class="text-danger"></span></h3>
+
+                </div>
+                <div class="col-6 p-2 m-0">
+                    <label class="form-control-label">State Name</label>
+                    <br />
+                    <select class="form-select mb-0 w-100" id="StateID" name="StateID" asp-for="StateID" style="font-size:17px;height:45px">
+                        <option value="">- - -</option>
+                        @foreach (StateModel StateName in ViewBag.Statelist)
+                        {
+                            <option value="@StateName.StateID">
+                                @StateName.StateName
+                            </option>
+                        }
+                    </select>
+                    <h3> <span asp-validation-for="StateID" class="text-danger"></span></h3>
+                </div>
+                <div class="col-6 p-2 m-0">
+                    <label class="form-control-label">Country Name</label>
+                    <br />
+                    <select class="form-select form-select mb-0 w-100" id="CountryID" name="CountryID" asp-for="CountryID" style="font-size:17px;height:45px">
+                        <option value="">- - -</option>
+                        @foreach (CountryModel CountryName in ViewBag.Countrylist)
+                        {
+                            <option value="@CountryName.CountryID" >@CountryName.CountryName</option>
+                        }
+                    </select>
+                    <h3> <span asp-validation-for="CountryID" class="text-danger"></span></h3>
+                </div>
+                <div class="ml-2 mt-3">
+                    <a class="btn btn-info text-white mt-3" onclick="goBack()">Back</a>
+                    <button type="submit" class="btn btn-primary ml-2 mt-3">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

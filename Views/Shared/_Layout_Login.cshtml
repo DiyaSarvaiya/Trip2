@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Montana</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Untree.co">
+	<link rel="shortcut icon" href="~/favicon.png">
+
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap4" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="~/tour/css/bootstrap.min.css">
+	<link rel="stylesheet" href="~/tour/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="~/tour/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="~/tour/css/jquery.fancybox.min.css">
+	<link rel="stylesheet" href="~/tour/fonts/icomoon/style.css">
+	<link rel="stylesheet" href="~/tour/fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="~/tour/css/daterangepicker.css">
+	<link rel="stylesheet" href="~/tour/css/aos.css">
+	<link rel="stylesheet" href="~/tour/css/style.css">
+
+	<!--montana css link-->
+
+	<link rel="stylesheet" href="~/montana/css/bootstrap.min.css">
+	<link rel="stylesheet" href="~/montana/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="~/montana/css/magnific-popup.css">
+	<link rel="stylesheet" href="~/montana/css/font-awesome.min.css">
+	<link rel="stylesheet" href="~/montana/css/themify-icons.css">
+	<link rel="stylesheet" href="~/montana/css/nice-select.css">
+	<link rel="stylesheet" href="~/montana/css/flaticon.css">
+	<link rel="stylesheet" href="~/montana/css/gijgo.css">
+	<link rel="stylesheet" href="~/montanac/ss/animate.css">
+	<link rel="stylesheet" href="~/montana/css/slicknav.css">
+	<link rel="stylesheet" href="~/montana/css/style.css">
+	<link rel="stylesheet" href="~/montana/css/responsive.css">
+</head>
+<body class=" bg-dark">
+	<main role="main" id="main" class="pb-3">
+		<div class="container-fluid p-0 pagetitle">
+		@RenderBody()
+	</div>
+</main>
+
+<script src="~/tour/js/jquery-3.4.1.min.js"></script>
+<script src="~/tour/js/popper.min.js"></script>
+<script src="~/tour/js/bootstrap.min.js"></script>
+<script src="~/tour/js/owl.carousel.min.js"></script>
+<script src="~/tour/js/jquery.animateNumber.min.js"></script>
+<script src="~/tour/js/jquery.waypoints.min.js"></script>
+<script src="~/tour/js/jquery.fancybox.min.js"></script>
+<script src="~/tour/js/aos.js"></script>
+<script src="~/tour/js/moment.min.js"></script>
+<script src="~/tour/js/daterangepicker.js"></script>
+<script src="~/tour/js/typed.js"></script>
+
+<script src="~/tour/js/custom.js"></script>
+
+<!--Montana js-->
+<script src="~/montana/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="~/montana/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="~/montana/js/popper.min.js"></script>
+<script src="~/montana/js/bootstrap.min.js"></script>
+<script src="~/montana/js/owl.carousel.min.js"></script>
+<script src="~/montana/js/isotope.pkgd.min.js"></script>
+<script src="~/montana/js/ajax-form.js"></script>
+<script src="~/montana/js/waypoints.min.js"></script>
+<script src="~/montana/js/jquery.counterup.min.js"></script>
+<script src="~/montana/js/imagesloaded.pkgd.min.js"></script>
+<script src="~/montana/js/scrollIt.js"></script>
+<script src="~/montana/js/jquery.scrollUp.min.js"></script>
+<script src="~/montana/js/wow.min.js"></script>
+<script src="~/montana/js/nice-select.min.js"></script>
+<script src="~/montana/js/jquery.slicknav.min.js"></script>
+<script src="~/montana/js/jquery.magnific-popup.min.js"></script>
+<script src="~/montana/js/plugins.js"></script>
+<script src="~/montana/js/gijgo.min.js"></script>
+
+<!--contact js-->
+<script src="~/montana/js/contact.js"></script>
+<script src="~/montana/js/jquery.ajaxchimp.min.js"></script>
+<script src="~/montana/js/jquery.form.js"></script>
+<script src="~/montana/js/jquery.validate.min.js"></script>
+<script src="~/montana/js/mail-script.js"></script>
+
+<script src="~/montana/js/main.js"></script>
+<script>
+	$('#datepicker').datepicker({
+		iconsLibrary: 'fontawesome',
+		icons: {
+			rightIcon: '<span class="fa fa-caret-down"></span>'
+		}
+	});
+	$('#datepicker2').datepicker({
+		iconsLibrary: 'fontawesome',
+		icons: {
+			rightIcon: '<span class="fa fa-caret-down"></span>'
+		}
+
+	});
+</script>
+	@await RenderSectionAsync("Scripts" , required: false);
+</body>
+</html>
+

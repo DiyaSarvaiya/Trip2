@@ -1,0 +1,225 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    string username = CommonVar.Username();
+}
+@using Trip2.BAL;
+@using System.Data;
+@model DataTable;
+<link href="~/admin/css/admin-view.css" rel="stylesheet" />
+<div class="main-content">
+
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html" style="margin-left:8%">Dashboard</a>
+            <!-- Form -->
+            <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+                <div class="form-group mb-0">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Search" type="text">
+                    </div>
+                </div>
+            </form>
+            <!-- User -->
+            <ul class="navbar-nav align-items-center d-none d-md-flex">
+                <li class="nav-item dropdown">
+                    <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        <div class="media align-items-center">
+                            <span class="avatar avatar-sm rounded-circle">
+                                <img alt="Image placeholder" src="~/admin/img/theme/team-4-800x800.jpg">
+                            </span>
+                            <div class="media-body ml-2 d-none d-lg-block">
+                                <span class="mb-0 text-sm  font-weight-bold">@username</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                        <div class=" dropdown-header noti-title">
+                            <h6 class="text-overflow m-0">Welcome!</h6>
+                        </div>
+                        <a href="~/admin/examples/profile.html" class="dropdown-item">
+                            <i class="ni ni-single-02"></i>
+                            <span>My profile</span>
+                        </a>
+                        <a href="~/admin/examples/profile.html" class="dropdown-item">
+                            <i class="ni ni-settings-gear-65"></i>
+                            <span>Settings</span>
+                        </a>
+                        <a href="~/admin/examples/profile.html" class="dropdown-item">
+                            <i class="ni ni-calendar-grid-58"></i>
+                            <span>Activity</span>
+                        </a>
+                        <a href="~/admin/examples/profile.html" class="dropdown-item">
+                            <i class="ni ni-support-16"></i>
+                            <span>Support</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-user-run"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-md-8" style="background: linear-gradient(87deg, #5e72e4 0, rgb(31, 66, 92) 100%) !important;margin-left:7%">
+        <div class="container-fluid">
+            <div class="header-body ">
+                <!-- Card stats -->
+                <div class="row d-flex justify-content-end">
+                    <div class="col-xl-12 col-lg-7">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body row pl-5 pr-5">
+                                <form method="get" asp-area="Admin" asp-controller="Hotel" asp-action="FilterHotels">
+                                <div class="row float-left col-3 w-25">
+                                    <div class="col-12 mb-1">
+                                        <h5 class="card-title text-uppercase mb-0">Hotel Name</h5>
+                                        <span class="h2 font-weight-bold mb-0">
+
+                                        </span>
+                                    </div>
+                                    <div class="col-12">
+                                        <input class="float-left w-75" name="name"></input>
+
+                                    </div>
+                                </div>
+
+                                <div class="row float-left w-25 col-3">
+                                    <div class="col-12 mb-1">
+                                        <h5 class="card-title text-uppercase mb-0">City Name</h5>
+                                        <span class="h2 font-weight-bold mb-0">
+
+                                        </span>
+                                    </div>
+                                    <div class="col-12">
+                                        <input class="float-left  w-75" name="city"></input>
+                                    </div>
+                                </div>
+
+                                <div class="row w-25 float-left col-3">
+                                    <div class="col-12 mb-1">
+                                        <h5 class="card-title text-uppercase  mb-0">Price</h5>
+                                        <span class="h2 font-weight-bold mb-0">
+
+                                        </span>
+                                    </div>
+                                    <div class="col-12">
+                                        <input class="float-left  w-75" name="pricePerNight"></input>
+                                    </div>
+                                </div>
+
+                                <div class="row w-25 float-left col-3">
+                                    <div class="col-12 mb-1">
+                                        <h5 class="card-title text-uppercase mb-0">Rating</h5>
+                                        <span class="h2 font-weight-bold mb-0">
+
+                                        </span>
+                                    </div>
+                                    <div class="col-12">
+                                        <input class="float-left w-75" name="rating"></input>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-1 h-75 d-flex justify-content-center align-items-center">Serach</button>
+                           </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid mt--7" style="width:91%;margin-left:8%">
+        <!-- Table -->
+        <div class="row">
+            <div class="col p-0">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <h2 class="mb-0 float-left">Hotel List</h2>
+                        <a asp-area="Admin" asp-controller="Hotel" asp-action="AddEdit" class="btn btn-icon btn-primary float-right" type="button" style="margin-right:2%">
+                            <span class="btn-inner--icon"><i class="ni ni-fat-add text-white mr-2"></i></span>
+                            <span class="text-white">Add Hotel</span>
+                        </a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table justify-content-center table-flush">
+                            <thead class="" id="ad-thead">
+                                <tr>
+                                    <th scope="col" class="text-center" id="ad-th-font">#</th>
+                                    <th scope="col" class="text-center" id="ad-th-font">Name</th>
+                                    <th scope="col" class="text-center" id="ad-th-font">CityName</th>
+                                    <th scope="col" class="text-center" id="ad-th-font">StateName</th>
+                                    <th scope="col" class="text-center" id="ad-th-font">CountryName</th>
+                                    <th scope="col" class="text-center" id="ad-th-font">Price Per Night</th>
+                                    <th scope="col" class="text-center" id="ad-th-font">Review</th>
+                                    <th scope="col" class="text-center" id="ad-th-font">Rating</th>
+                                    <th scope="col" class="text-center" id="ad-th-font">AmenitiesCount</th>
+                                    <th scope="col" class="text-center" id="ad-th-font">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var RowNo = 0;
+                                    @foreach (DataRow dr in Model.Rows)
+                                    {
+                                        <tr>
+                                            <th scope="row" class="text-center" id="ad-td-font">@(RowNo+=1)</th>
+                                            <td class="text-center" id="ad-td-font">@dr["Name"]</td>
+                                            <td class="text-center" id="ad-td-font">@dr["CityName"]</td>
+                                            <td class="text-center" id="ad-td-font">@dr["StateName"]</td>
+                                            <td class="text-center" id="ad-td-font">@dr["CountryName"]</td>
+                                            <td class="text-center" id="ad-td-font">@dr["PricePerNight"]</td>
+                                            <td class="text-center" id="ad-td-font">@dr["Review"]</td>
+                                            <td class="text-center" id="ad-td-font">@dr["Rating"]</td>
+                                            <td class="text-center" id="ad-td-font">@dr["AmenitiesCount"]</td>
+                                            <td class="text-center" id="ad-td-font">
+
+                                                
+                                                    <a asp-area="Admin" asp-controller="Hotel" asp-action="AddEdit" asp-route-HotelID="@dr["HotelID"]">
+                                                        <div class="icon icon-shape bg-primary mr-2 text-white shadow" style="border-radius:5px;height:35px;width:35px">
+                                                            <img src="~/Font/file-pen-solid.svg" height="17px" />
+                                                        </div>
+                                                    </a>
+
+                                                    <a asp-area="Admin" asp-controller="Hotel" asp-action="Delete" asp-route-HotelID="@dr["HotelID"]">
+                                                        <div class="icon icon-shape bg-danger mr-2 text-white shadow" style="border-radius:5px;height:35px;width:35px">
+                                                            <img src="~/Font/xmark-solid.svg" height="17px" />
+                                                        </div>
+                                                    </a>
+                                                    <a asp-area="Admin" asp-controller="Hotel" asp-action="HotelByID" asp-route-HotelID="@dr["HotelID"]">
+                                                        <div class="icon icon-shape bg-info text-white mr-2 shadow" style="border-radius:5px;height:35px;width:35px">
+                                                            <img src="~/Font/circle-info-solid.svg" height="17px" />
+                                                        </div>
+                                                    </a>
+
+                                                    <a asp-area="Admin" asp-controller="Room" asp-action="RoomList" asp-route-HotelID="@dr["HotelID"]">
+                                                        <div class="icon icon-shape bg-success text-white shadow" style="border-radius:5px;height:35px;width:35px">
+                                                            <img src="~/Font/bed-solid.svg" height="17px" />
+                                                        </div>
+                                                    </a>
+
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link rel="stylesheet" href="~/flight/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/flight/css/style.css" />
+<div class="bradcam_area breadcam_bg_1" style="background-image:url('../flight/flight-1.jpg')">
+    <h3>Room</h3>
+</div>
+
+<form id="form1" method="post" asp-area="Room" asp-controller="Room" asp-action="SearchRoom">
+    <div class="d-flex justify-content-center pt-0">
+        <div class="booking-form w-75 mb-0 mt-5 shadow">
+            <div class="form-header">
+                <h1>Book Your Room</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group m-0">
+                        <input class="" name="CheckInDate" type="date" placeholder="Check In">
+                    </div>
+                     <span>
+                        @if (ViewBag.RoomCheckInDateError != null)
+                        {
+                            <h4 class="text-danger ml-3">
+                                @ViewBag.RoomCheckInDateError
+                            </h4>
+                        }
+                        else
+                        {
+                            <br />
+                        }
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group m-0">
+                        <input class="" name="CheckOutDate" type="date" placeholder="Check Out">
+                    </div>
+                    <span>
+                        @if (ViewBag.RoomCheckOutDateError != null)
+                        {
+                            <h4 class="text-danger ml-3">
+                                @ViewBag.RoomCheckOutDateError
+                            </h4>
+                        }
+                        else
+                        {
+                            <br />
+                        }
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <select class="" name="Class" style="height:50px">
+                            <option>Suit</option>
+                            <option>Business</option>
+                            <option>First</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group m-0">
+                        <input class="form-control" name="Adults" value="" type="text" placeholder="Adults">
+                    </div>
+                    <span>
+                        @if (ViewBag.BookAdultsError != null)
+                        {
+                            <h4 class="text-danger ml-3">
+                                @ViewBag.BookAdultsError
+                            </h4>
+                        }
+                        else
+                        {
+                            <br />
+                        }
+                    </span>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group m-0">
+                        <input class="form-control" name="Children" value="" type="text" placeholder="Children">
+                    </div>
+                    <span>
+                        @if (ViewBag.BookChildrenError != null)
+                        {
+                            <h4 class="text-danger ml-3">
+                                @ViewBag.BookChildrenError
+                            </h4>
+                        }
+                        else
+                        {
+                            <br />
+                        }
+                    </span>
+                </div>
+            </div>
+            <div class="form-btn">
+                <button class="submit-btn" onclick="copyData()" type="submit">Check availability</button>
+
+            </div>
+        </div>
+
+       
+
+    </div>
+    
+</form>

@@ -1,0 +1,120 @@
+﻿.package-form {
+    padding: 0px 40px 40px;
+    margin: 100px;
+    width: 75%;
+    background: rgba(26, 55, 77, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    font-size: 2rem;
+}
+
+    .package-form .form-header {
+        padding: 40px;
+        margin: 0px -40px 30px;
+        background: rgb(31, 66, 92);
+    }
+
+        .package-form .form-header h1 {
+            font-weight: 700;
+            text-transform: capitalize;
+            font-size: 38px;
+            margin: 0;
+            color: #ffffff;
+        }
+
+.package-card {
+    height: 450px;
+    width: 100%;
+    margin: 40px 40px 0 0;
+    padding: 20px;
+    background-color: #e8ecee;
+    border-radius: 20px;
+    overflow: hidden;
+    font-size: 2rem;
+}
+
+.package-inner-card {
+    height: 100%;
+    width: 100%;
+    z-index:2;
+}
+
+    .package-inner-card .detail-card {
+        width: 35%;
+        margin: 20px;
+        float: left;
+    }
+
+        .package-inner-card .detail-card .detail-title {
+            font-size: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+.package-card h1 {
+    color: rgb(3, 57, 98);
+}
+
+.detail-name {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgb(3, 57, 98);
+}
+
+.detail {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.package-img {
+    border-radius: 10px;
+    overflow: hidden;
+    width: 27%;
+    height: 70%;
+    margin: 20px;
+    float: left;
+}
+
+    .package-img img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+.package-flight-img {
+    border-radius: 10px;
+    overflow: hidden;
+    width: 10%;
+    height: 15%;
+    margin: 20px;
+    margin-left:0px;
+    float: left;
+}
+    .package-flight-img img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+
+.detail-card-1{
+    width:30%;
+}
+.total-cost {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: rgb(3, 57, 98);
+}
+.summery-box {
+    background-color: rgba(26, 55, 77, 0.05);
+    height: 55%;
+    width: 25%;
+    float: right;
+    border-radius: 10px;
+    z-index: 1;
+    padding: 1%;
+    margin-right:2%;
+}

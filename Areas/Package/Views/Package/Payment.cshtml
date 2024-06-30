@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/package/css/payment.css">
+@model Trip2.Areas.Package.Models.PaymentModel;
+<div class="bradcam_area breadcam_bg_1">
+    <h3>Payment</h3>
+</div>
+
+
+<div class="">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-12">
+            <div class="card mx-auto ">
+                <p class="heading">PAYMENT DETAILS</p>
+                <form type="post" class="card-details">
+                    <div class="form-group pt-3 mb-0 " style="height:90px;">
+                        <p class="text-warning mb-0">Card Number</p>
+                        <input asp-for="cardNumber" type="text" name="cardNumber" placeholder="1234 5678 9012 3457" size="30" id="cno" minlength="19" maxlength="19">
+                        <img src="~/package/visa.png" width="64px" height="60px" />
+                       
+                    </div>
+                    <div style="height:20px;"><span asp-validation-for="cardNumber" class="text-danger"></span></div>
+                    
+
+                    <div class="form-group pt-2 mb-0">
+                        <p class="text-warning mb-0">Cardholder's Name</p>
+                        <input asp-for="cardHolderName" type="text" name="cardHolderName" placeholder="Name" size="30">
+                    </div>
+                    <div style="height:20px;"><span asp-validation-for="cardHolderName" class="text-danger"></span></div>
+                    
+
+                    <div class="form-group pt-2 mb-0">
+                        <div class="row d-flex">
+                            <div class="col-sm-4">
+                                <p class="text-warning mb-0">Expiration</p>
+                                <input asp-for="expiration" type="text" name="expiration" placeholder="MM/YYYY" size="15" minlength="6" maxlength="6">
+
+                            </div>
+
+                            <div class="col-sm-5 pl-3 ml-5">
+                                <p class="text-warning mb-0">Cvv</p>
+                                <input asp-for="cvv" type="password" name="cvv" placeholder="&#9679;&#9679;&#9679;" size="10" minlength="3" maxlength="3">
+
+                            </div>
+
+                            @* <div class="col-sm-3 pt-0">
+                            <button type="button" class="btn btn-primary btn-payment"><i class="fas fa-arrow-right px-3 py-2"></i></button>
+                            </div> *@
+
+                        </div>
+                        <span asp-validation-for="expiration" class="text-danger"></span>
+                        <span asp-validation-for="cvv" class="text-danger pl-5 ml-2"></span>
+                    </div>
+                    <div class="row ml-1">
+                        <a class="btn mt-2 mr-4 btn-payment-cancle" onclick="goBack()">Cancle</a>
+                        <button type="submit" class="btn col-2 mt-2 btn-payment text-light">Pay</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

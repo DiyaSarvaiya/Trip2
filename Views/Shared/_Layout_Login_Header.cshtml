@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Trip2.BAL;
+
+@{
+	string username = CommonVar.Username();
+}
+
+<li>
+	<div class="nav-item dropdown">
+		<a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<div class="media align-items-center">
+				<span class="avatar avatar-sm rounded-circle">
+					<img alt="Image" src="~/admin/img/theme/team-4-800x800.jpg" style="height:40px;" class=" rounded-circle">
+				</span>
+				<span class="mb-0 text-sm ml-2 font-weight-bold"></span>
+			</div>
+		</a>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+			<button class="dropdown-item" type="button">
+				<img src="~/Font/user-solid.svg" style="height:18px;margin-right:6%" />
+				<span>@username</span>
+			</button>
+			<button class="dropdown-item" type="button">
+				<img src="~/Font/gear-solid.svg" style="height:18px;margin-right:6%" />
+				<span>Settings</span>
+			</button><hr />
+			<button class="dropdown-item" type="button">
+				<img src="~/Font/right-from-bracket-solid.svg" style="height:18px;margin-right:6%" />
+				<span>Log Out</span>
+			</button>
+		</div>
+	</div>
+</li>

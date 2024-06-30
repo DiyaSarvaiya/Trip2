@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+@using System.Data;
+@model DataTable;
+<link href="~/admin/css/admin-view.css" rel="stylesheet" />
+<div class=" mt-5 d-flex justify-content-center" style="margin-left:13%; height:400px;width:80%;">
+    <div class="shadow w-75">
+        <div class="card-header">
+            <h2 class="ml-4">Room Detail</h2>
+        </div>
+        <div class="p-5 row w-100 d-flex justify-content-center ">
+            @{
+                @foreach (DataRow dr in Model.Rows)
+                {
+
+                    <div>
+                        <img src="@dr["Photo"]" height="250px" width="400px" />
+                    </div>
+                    <div class="col-6 ml-5">
+                        <div class="row mb-2 mt-2">
+                            <h3 class="col-5">Hotel Name : </h3>
+                            <h3 class="col-7 text-muted">@dr["HotelName"]</h3>
+                        </div>
+                        <div class="row mb-2 mt-2">
+                            <h3 class="col-5">Type : </h3>
+                            <h3 class="col-7 text-muted">@dr["Type"]</h3>
+                        </div>
+                        <div class="row mb-2 mt-2">
+                            <h3 class="col-5">Rating : </h3>
+                            <h3 class="col-7 text-muted">@dr["Rating"]</h3>
+                        </div>
+                        <div class="row mb-2 mt-2">
+                            <h3 class="col-5">Price : </h3>
+                            <h3 class="col-7 text-muted">@dr["Price"]</h3>
+                        </div>
+                       
+
+                        <a class="btn btn-primary text-dark col-2 mt-2" onclick="goBack()">Back</a>
+                    </div>
+
+
+
+                }
+            }
+        </div>
+    </div>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>

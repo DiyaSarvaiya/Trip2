@@ -1,0 +1,77 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+body {
+    /*background: linear-gradient(to right, rgba(235,224,232,1) 52%,rgba(254,191,1,1) 53%,rgba(254,191,1,1) 100%);*/
+    font-family: 'Roboto', sans-serif;
+}
+
+.card {
+    border: none;
+    max-width: 550px;
+    height:500px;
+    border-radius: 15px;
+    margin: 150px 0 150px;
+    padding: 35px;
+    padding-bottom: 20px !important;
+    margin-top:150px;
+    background: #f3f5f6;
+}
+
+.heading {
+    color: #336f9d;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+img {
+    transform: translate(50px,-20px);
+}
+
+    img:hover {
+        cursor: pointer;
+    }
+
+.text-warning {
+    font-size: 20px;
+    font-weight: 500;
+    color: #1a374d !important; 
+}
+
+#cno {
+    transform: translateY(-10px);
+}
+
+input {
+    border-bottom: 1.5px solid #E8E5D2 !important;
+    border-radius: 0;
+    border: 0;
+    font-size:1.2rem;
+    height:40px;
+    
+}
+
+.form-group input:focus {
+    border: 0;
+    outline: 0;
+}
+
+.col-sm-5 {
+    padding-left: 90px;
+}
+
+.btn-payment-cancle {
+    background: #1a374d38; !important;
+    border: none;
+    color:white; 
+}
+
+
+.btn-payment {
+    background: #336f9d; !important;
+    border: none;
+}
+
+    .btn-payment:focus {
+        box-shadow: none;
+    }

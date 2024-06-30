@@ -1,0 +1,19 @@
+﻿
+
+
+
+@media screen and (min-width: 768px) {
+    .resizable-div {
+        width: 70%; /* Adjusted width for larger screens */
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .resizable-div {
+        width: 80%; /* Adjusted width for even larger screens */
+    }
+}
+
+.list-container{
+    max-width:1270px;
+}

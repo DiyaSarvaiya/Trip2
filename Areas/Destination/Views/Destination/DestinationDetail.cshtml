@@ -1,0 +1,139 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Trip2.Areas.Users_Area.Models;
+@using System.Data;
+@using Trip2.BAL;
+@model DataTable;
+<div class="bradcam_area breadcam_bg_1">
+    <h3>Explore World</h3>
+</div>
+
+
+<div class="untree_co-section pt-0">
+
+
+    <div class="container">
+        <div class="row">
+            <div style="height:60px" class="w-100 m-3 d-flex justify-content-center">
+                @if (TempData["Desti_SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success h-100" role="alert">
+                        @TempData["Desti_SuccessMessage"]
+                    </div>
+                }
+                @if (TempData["Desti_Error"] != null)
+                {
+                    <div class="alert alert-success h-100" role="alert">
+                        @TempData["Desti_Error"]
+                    </div>
+                }
+            </div>
+            @{
+                @foreach (DataRow dr in Model.Rows)
+                {
+                    <form asp-area="Destination" asp-controller="Destination" asp-action="AddDestiToPackage">
+                        <div class="col-lg-7">
+                            <img src=@dr["Photo1"] style="height:400px" class="img-fluid rounded-20 float-left w-100" />
+
+                        </div>
+
+                        <div class="col-lg-5 pl-lg-5 ml-auto">
+                            <h2 class="section-title mb-4">@dr["Name"]</h2>
+                            <h1></h1>
+                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.@dr["Detail"]</p>
+
+                            <div class="row">
+                                <div class="col-5">
+                                    <h5 class="float-left">Climate</h5>
+                                </div>
+                                <div class="col-5">
+                                    <img src="~/Font/cloud-solid.svg" style="height:15px" class="mr-2 float-left" />
+                                    <h5 class="text-muted">@dr["Climate"]</h5>
+                                </div>
+                                <div class="col-5">
+                                    <h5 class="float-left">Best Time To Visit</h5>
+                                </div>
+                                <div class="col-5">
+                                    <div class="ml-4 text-muted">@dr["BestTimeToVisit"]</div>
+                                </div>
+                                <div class="col-5">
+                                    <h5 class="float-left">Currency</h5>
+                                </div>
+                                <div class="col-5">
+                                    <img src="~/Font/coins-solid.svg" style="height:17px" class="mr-2 float-left" />
+                                    <div class="text-muted">@dr["Currency"]</div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="">
+                                <a class="btn btn-secondary text-white mr-3 pr-3" onclick="goBack()">Back</a>
+                                <input type="hidden" name="DestinationID" value="@Convert.ToInt32(dr["DestinationID"])" />
+                                <button class="btn btn-primary text-white" type="submit">Save</button>
+
+
+                            </div>
+
+                        </div>
+                    </form>
+                }
+            }
+
+
+            @*  <ul class="list-group">
+
+            <li class="list-group-item p-0 row" style="border:none">
+            <div class="col-6">
+            <h5 class="float-left">Climate</h5>
+            </div>
+            <div class="col-6">
+            <img src="~/Font/cloud-solid.svg" style="height:15px" class="mr-2 ml-5 float-left" />
+            <h5 class="text-muted">@dr["Climate"]</h5>
+            </div>
+            </li>
+            <li class="list-group-item p-0" style="border:none">
+            <h5 class="float-left">Best Time To Visit</h5>
+            <img src="~/Font/temperature-low-solid.svg" style="height:17px" class="mr-2 ml-5 float-left" />
+            <div class="text-muted">@dr["BestTimeToVisit"]</div>
+            </li>
+            <li class="list-group-item p-0" style="border:none">
+            <h5 class="float-left">Currency</h5>
+            <img src="~/Font/coins-solid.svg" style="height:17px" class="mr-2 ml-5 float-left" />
+            <div class="text-muted">@dr["Currency"]</div>
+            </li>
+            <li class="list-group-item p-0" style="border:none">
+            <h5 class="float-left">Rating</h5>
+            <p class="mr-2 ml-5 float-left">
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star-o"></i>
+            <span class="text-muted">&nbsp;@dr["Rating"]</span>
+            </p>
+
+            </li>
+            </ul> *@
+
+
+
+        </div>
+    </div>
+</div>
+<script>
+    // Fade out the success message after 5 seconds
+    setTimeout(function () {
+        $('.alert-success').fadeOut('slow');
+    }, 5000); // 5000 milliseconds = 5 seconds
+
+
+    function goBack() {
+        window.history.back();
+    }
+
+</script>
+
+
